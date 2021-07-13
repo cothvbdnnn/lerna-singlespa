@@ -6,13 +6,18 @@
       "**"
     ],
     "packages": [
-      "packages/*"
+      "packages/*",
+      "config/*"
     ]
   },
   "scripts": {
     "test": "lerna run test",
-    "new-version": "lerna version --conventional-commits --yes",
+    "pre:push": "lerna run test --steam",
+    "update-version": "lerna version --conventional-commits --yes",
     "diff": "lerna diff",
+    "clean": "rm -rf node_modules && lerna clean",
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
     "root": "yarn workspace @cf/root-config start",
     "shared": "yarn workspace @cf/shared start",
     "app": "yarn workspace @cf/app serve",
@@ -20,6 +25,7 @@
   },
   "devDependencies": {
     "concurrently": "^6.2.0",
+    "husky": "^7.0.1",
     "lerna": "^4.0.0"
   }
 }
