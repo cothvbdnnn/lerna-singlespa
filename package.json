@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "lerna run test",
-    "pre:push": "lerna run test --steam",
+    "pre:push": "lerna run test --stream",
     "update-version": "lerna version --conventional-commits --yes",
     "diff": "lerna diff",
     "clean": "rm -rf node_modules && lerna clean",
@@ -27,5 +27,11 @@
     "concurrently": "^6.2.0",
     "husky": "^7.0.1",
     "lerna": "^4.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lerna run test --stream",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
